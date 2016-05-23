@@ -1,0 +1,9 @@
+2015/4/24
+@Badminton.cpp：
+int yObjectPoint = static_cast<int>(minRect[idx].center.y) -> int yObjectPoint = static_cast<int>(minRect[idx].center.y + 0.5) 
+
+第152、158、159行程序有问题：
+for (int idx = 0; idx < g_Contours.size(); idx++)
+	(*depthSpacePoint).x = iDepthWidth - minRect[idx].center.x - 1;     //反转处理
+	(*depthSpacePoint).y = minRect[idx].center.y;
+我们只需一个返回值，在for循环中，会有g_Contours.size()个返回值，这样程序就有问题了(除非视野中排除到只有一个轮廓)
